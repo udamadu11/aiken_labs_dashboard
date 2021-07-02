@@ -11,6 +11,7 @@ import {
   faStar,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import Add from "./add/Add";
 
 const Sidebar = ({ openSidebar, closeSidebar }) => {
   return (
@@ -26,6 +27,9 @@ const Sidebar = ({ openSidebar, closeSidebar }) => {
       </div>
       <div className="sidebar_menu">
         <h2>My Dashborad</h2>
+      </div>
+      <div className="sidebar_add">
+        <Add />
       </div>
 
       <div className="sidebar_bottom">
