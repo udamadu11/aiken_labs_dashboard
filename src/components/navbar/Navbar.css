@@ -1,0 +1,44 @@
+.navbar {
+  background-color: #3333ff;
+  grid-area: nav;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+  border-bottom: 1px solid lightblue;
+}
+.navbar_icon {
+  display: none;
+}
+.nav_icon > i {
+  font-size: 26px;
+  color: aliceblue;
+}
+.navbar_left > a {
+  margin-right: 30px;
+  text-decoration: none;
+  color: aliceblue;
+}
+.navbar_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar_right > a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 978px) {
+  .nav_icon {
+    display: inline;
+  }
+}
+@media screen and (max-width: 480px) {
+  .navbar_left {
+    display: none;
+  }
+}
