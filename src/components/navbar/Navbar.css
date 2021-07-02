@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #3333ff;
+  background-color: #296296;
   grid-area: nav;
   height: 60px;
   display: flex;
@@ -32,12 +32,12 @@
   font-size: 20px;
 }
 
-@media screen and (max-width: 978px) {
+@media only screen and (max-width: 978px) {
   .nav_icon {
     display: inline;
   }
 }
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .navbar_left {
     display: none;
   }

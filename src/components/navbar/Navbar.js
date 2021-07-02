@@ -7,7 +7,9 @@ import {
   faBars,
   faBell,
   faEllipsisV,
+  faUserCircle,
   faSearch,
+  faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ sidebar, openSidebar }) => {
@@ -32,7 +34,7 @@ const Navbar = ({ sidebar, openSidebar }) => {
           <FontAwesomeIcon icon={faBell} />
         </a>
         <a href="#">
-          <FontAwesomeIcon icon={faBell} />
+          <FontAwesomeIcon icon={faUserCircle} />
         </a>
         <a href="#">
           <FontAwesomeIcon icon={faEllipsisV} />
