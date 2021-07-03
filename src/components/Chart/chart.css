@@ -1,2 +1,75 @@
-.chartContainer {
+main {
+  grid-area: main;
+  overflow-y: auto;
+}
+.main_container {
+  padding: 20px 35px;
+}
+.main_title {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  justify-content: space-between;
+}
+.main_icon {
+  margin-right: 10px;
+  font-size: 32px;
+}
+.title {
+  display: flex;
+  color: gray;
+  align-items: center;
+}
+.title > h3 {
+  font-size: 26px;
+}
+.time {
+  color: gray;
+  align-items: center;
+  display: flex;
+}
+.time > h3 {
+  font-size: 18px;
+  margin-right: 10px;
+}
+.time > h2 {
+  font-size: 28px;
+  margin-right: 10px;
+}
+.icon {
+  font-size: 24px;
+  color: gray;
+  display: flex;
+}
+@media only screen and (max-width: 855px) {
+  .chartContainer {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+  .chart {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .main_title {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+  }
+  .main_icon {
+    font-size: 20px;
+  }
+  .title > h3 {
+    font-size: 18px;
+  }
+  .time {
+    display: none;
+  }
+  .main_cards {
+    width: 100px;
+    height: 100px;
+  }
 }

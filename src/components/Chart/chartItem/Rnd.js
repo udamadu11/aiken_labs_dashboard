@@ -1,6 +1,7 @@
 import React from "react";
 import { Rnd } from "react-rnd";
-import ChartItem from "./ChartItem";
+import Cards from "./Cards";
+
 const RND = ({ minWidth, minHeight, bounds }) => {
   return (
     <div>
@@ -15,7 +16,7 @@ const RND = ({ minWidth, minHeight, bounds }) => {
         minHeight={minHeight}
         bounds={bounds}
       >
-        <ChartItem />
+        <Cards />
       </Rnd>
     </div>
   );
