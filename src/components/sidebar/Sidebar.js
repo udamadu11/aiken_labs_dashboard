@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/edge.png";
 
+//component
+import Add from "./add/Add";
+import Dashboard from "./dashboard/Dashboard";
 //css
 import "./Sidebar.css";
 //icon
@@ -11,9 +14,10 @@ import {
   faStar,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import Add from "./add/Add";
 
 const Sidebar = ({ openSidebar, closeSidebar }) => {
+  const [add, setAdd] = useState([]);
+  console.log(add);
   return (
     <div className={openSidebar ? "sidebar-responsive" : ""} id="sidebar">
       <div className="sidebar_title">
@@ -28,8 +32,29 @@ const Sidebar = ({ openSidebar, closeSidebar }) => {
       <div className="sidebar_menu">
         <h2>My Dashborad</h2>
       </div>
+      <div>
+        <Dashboard
+          icon1={faBars}
+          icon2={faStar}
+          icon3={faTimes}
+          name="Finance"
+        />
+        <Dashboard icon1={faBars} icon2={faStar} icon3={faTimes} name="Sales" />
+        {add.map((ad) => (
+          <Dashboard
+            key={ad.id}
+            icon1={faBars}
+            icon2={faStar}
+            icon3={faTimes}
+            name={ad.name}
+            add={add}
+            setAdd={setAdd}
+            ad={ad}
+          />
+        ))}
+      </div>
       <div className="sidebar_add">
-        <Add />
+        <Add add={add} setAdd={setAdd} />
       </div>
 
       <div className="sidebar_bottom">
@@ -37,17 +62,22 @@ const Sidebar = ({ openSidebar, closeSidebar }) => {
         <FontAwesomeIcon icon={faUsers} />
       </div>
 
-      <div className="items">
-        <FontAwesomeIcon icon={faBars} />
-        <h3 style={{ marginLeft: 10 }}>Shared 01</h3>
-        <FontAwesomeIcon icon={faStar} />
-        <FontAwesomeIcon icon={faTimes} className="color" />
+      <div>
+        <Dashboard
+          icon1={faBars}
+          icon2={faStar}
+          icon3={faTimes}
+          name="Shared 01"
+        />
       </div>
-      <div className="items">
-        <FontAwesomeIcon icon={faBars} />
-        <h3 style={{ marginLeft: 10 }}>Shared 02</h3>
-        <FontAwesomeIcon icon={faStar} />
-        <FontAwesomeIcon icon={faTimes} className="color" />
+
+      <div>
+        <Dashboard
+          icon1={faBars}
+          icon2={faStar}
+          icon3={faTimes}
+          name="Shared 02"
+        />
       </div>
     </div>
   );

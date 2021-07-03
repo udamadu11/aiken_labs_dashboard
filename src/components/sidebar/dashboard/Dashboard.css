@@ -1,0 +1,12 @@
+.card {
+  width: 300px;
+  margin: auto;
+}
+.input {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.button {
+  display: flex;
+  justify-content: space-between;
+}

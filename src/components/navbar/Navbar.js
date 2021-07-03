@@ -9,7 +9,6 @@ import {
   faEllipsisV,
   faUserCircle,
   faSearch,
-  faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ sidebar, openSidebar }) => {
@@ -21,22 +20,22 @@ const Navbar = ({ sidebar, openSidebar }) => {
         </i>
       </div>
       <div className="navbar_left">
-        <a href="#">
+        <a href="a">
           <FontAwesomeIcon icon={faSearch} />
         </a>
-        <a href="#">Dashbord</a>
-        <a href="#">Play Area</a>
-        <a href="#">Wiget</a>
-        <a href="#">Template</a>
+        <a href="a">Dashbord</a>
+        <a href="a">Play Area</a>
+        <a href="a">Wiget</a>
+        <a href="a">Template</a>
       </div>
       <div className="navbar_right">
-        <a href="#">
+        <a href="a">
           <FontAwesomeIcon icon={faBell} />
         </a>
-        <a href="#">
+        <a href="a">
           <FontAwesomeIcon icon={faUserCircle} />
         </a>
-        <a href="#">
+        <a href="a">
           <FontAwesomeIcon icon={faEllipsisV} />
         </a>
       </div>
