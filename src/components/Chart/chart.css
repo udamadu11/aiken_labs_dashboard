@@ -41,6 +41,9 @@ main {
   color: gray;
   display: flex;
 }
+.main_cards {
+  width: 400px;
+}
 @media only screen and (max-width: 855px) {
   .chartContainer {
     grid-template-columns: 1fr;
@@ -71,5 +74,8 @@ main {
   .main_cards {
     width: 100px;
     height: 100px;
+  }
+  .main_cards {
+    width: 380px;
   }
 }

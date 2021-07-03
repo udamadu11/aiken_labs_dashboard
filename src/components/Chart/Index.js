@@ -30,8 +30,12 @@ const Index = (props) => {
         </div>
 
         <div className="main_cards">
-          <RND />
-          <RND />
+          {/* <RND minWidth={300} minHeight={300} />
+          <RND minWidth={300} minHeight={300} /> */}
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
         </div>
       </div>
     </main>
