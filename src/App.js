@@ -3,6 +3,7 @@ import { useState } from "react";
 //component
 import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
+import Index from "./components/Chart/Index";
 
 const App = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -16,7 +17,7 @@ const App = () => {
   return (
     <div className="container">
       <Navbar sidebar={sidebar} openSidebar={openSidebar} />
-      <h1>Dashborad</h1>
+      <Index />
       <Sidebar openSidebar={openSidebar} closeSidebar={closeSidebar} />
     </div>
   );
