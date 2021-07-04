@@ -3,7 +3,7 @@ main {
   overflow-y: auto;
 }
 .main_container {
-  padding: 20px 35px;
+  padding: 20px 30px;
 }
 .main_title {
   display: flex;
@@ -42,7 +42,11 @@ main {
   display: flex;
 }
 .main_cards {
-  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.griditem {
+  display: flex;
 }
 @media only screen and (max-width: 855px) {
   .chartContainer {
@@ -77,5 +81,8 @@ main {
   }
   .main_cards {
     width: 380px;
+  }
+  .griditem {
+    flex-wrap: wrap;
   }
 }

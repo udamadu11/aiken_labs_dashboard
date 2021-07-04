@@ -1,6 +1,8 @@
 import React from "react";
 import "./chart.css";
 import Cards from "./chartItem/Cards";
+import { Rnd } from "react-rnd";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Data } from "../../chart";
 import {
@@ -9,6 +11,7 @@ import {
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import RND from "./chartItem/RND";
+import { Grid } from "@material-ui/core";
 
 const Index = (props) => {
   let data = Data.find((e) => e.id === 1);
@@ -39,11 +42,35 @@ const Index = (props) => {
           <RND minWidth={300} minHeight={300}>
             {<Cards />}
           </RND> */}
-          <Cards type="Bar" data={data} />
+          {/* <RND minWidth={300} minHeight={300} data={data} /> */}
+          {/* <Cards type="Bar" data={data} />
           <Cards type="Line" data={data} />
           <Cards type="Doughnut" data={data} />
           <Cards type="Scatter" data={data} />
-          <Cards type="PolarArea" data={data} />
+          <Cards type="PolarArea" data={data} /> */}
+          {/* <Rnd>
+            <Cards type="Bar" data={data} />
+          </Rnd>
+          <Rnd>
+            <Cards type="Line" data={data} />
+          </Rnd>
+          <Rnd>
+            <Cards type="Doughnut" data={data} />
+          </Rnd>
+          <Rnd>
+            <Cards type="PolarArea" data={data} />
+          </Rnd> */}
+          <Grid container spacing={3}>
+            <Grid item xs>
+              <Rnd>
+                <Cards type="Bar" data={data} />
+              </Rnd>
+              <Rnd>
+                <Cards type="Line" data={data} />
+              </Rnd>
+            </Grid>
+            <Grid item xs></Grid>
+          </Grid>
         </div>
       </div>
     </main>

@@ -5,11 +5,17 @@ import {
   faStar,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
-import { Card, IconButton, CardContent, CardHeader } from "@material-ui/core";
+import {
+  Card,
+  IconButton,
+  CardContent,
+  CardHeader,
+  width,
+} from "@material-ui/core";
 
 import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
 import "./Cards.css";
-const Cards = ({ type, data }) => {
+const Cards = ({ type, data, width, height }) => {
   const { backgroundColor, label, dataSet } = data;
   console.log(data);
   let Type;
@@ -34,7 +40,7 @@ const Cards = ({ type, data }) => {
   }
   return (
     <div>
-      <Card className="chart_card">
+      <Card className="chart_card" style={{ width: width, height: height }}>
         <CardHeader
           title="Shrimp and Chorizo Paella"
           className="chart_title"

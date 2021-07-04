@@ -11,11 +11,11 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = ({ sidebar, openSidebar }) => {
+const Navbar = ({ toggle }) => {
   return (
     <nav className="navbar">
       <div className="nav_icon">
-        <i className="fa fa-bars">
+        <i className="fa fa-bars" onClick={toggle}>
           <FontAwesomeIcon icon={faBars} />
         </i>
       </div>

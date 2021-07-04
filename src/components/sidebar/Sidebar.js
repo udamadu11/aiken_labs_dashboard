@@ -15,15 +15,20 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Sidebar = ({ openSidebar, closeSidebar }) => {
+const Sidebar = ({ isOpen, toggle }) => {
   const [add, setAdd] = useState([]);
   console.log(add);
   return (
-    <div className={openSidebar ? "sidebar-responsive" : ""} id="sidebar">
+    <div className={isOpen ? "sidebar_responsive" : ""} id="sidebar">
       <div className="sidebar_title">
         <div className="sidebar_image">
           <img src={logo} alt="logo" />
           <h1>ZEPTOLYTICS</h1>
+          <FontAwesomeIcon
+            icon={faTimes}
+            className="closeButton"
+            onClick={toggle}
+          />
         </div>
       </div>
       <div className="sidebar_search">

@@ -6,19 +6,15 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Index from "./components/Chart/Index";
 
 const App = () => {
-  const [sidebar, setSidebar] = useState(false);
-  const openSidebar = () => {
-    setSidebar(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
   };
-  const closeSidebar = () => {
-    setSidebar(false);
-  };
-
   return (
     <div className="container">
-      <Navbar sidebar={sidebar} openSidebar={openSidebar} />
+      <Navbar toggle={toggle} />
       <Index />
-      <Sidebar openSidebar={openSidebar} closeSidebar={closeSidebar} />
+      <Sidebar isOpen={isOpen} toggle={toggle} />
     </div>
   );
 };
