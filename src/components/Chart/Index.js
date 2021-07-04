@@ -2,6 +2,7 @@ import React from "react";
 import "./chart.css";
 import Cards from "./chartItem/Cards";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Data } from "../../chart";
 import {
   faRedoAlt,
   faShareAlt,
@@ -10,6 +11,8 @@ import {
 import RND from "./chartItem/RND";
 
 const Index = (props) => {
+  let data = Data.find((e) => e.id === 1);
+  console.log(data);
   return (
     <main>
       <div className="main_container">
@@ -30,12 +33,17 @@ const Index = (props) => {
         </div>
 
         <div className="main_cards">
-          {/* <RND minWidth={300} minHeight={300} />
-          <RND minWidth={300} minHeight={300} /> */}
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {/* <RND minWidth={300} minHeight={300}>
+            {<Cards />}
+          </RND>
+          <RND minWidth={300} minHeight={300}>
+            {<Cards />}
+          </RND> */}
+          <Cards type="Bar" data={data} />
+          <Cards type="Line" data={data} />
+          <Cards type="Doughnut" data={data} />
+          <Cards type="Scatter" data={data} />
+          <Cards type="PolarArea" data={data} />
         </div>
       </div>
     </main>

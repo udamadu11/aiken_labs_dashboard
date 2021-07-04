@@ -15,7 +15,7 @@ const Navbar = ({ sidebar, openSidebar }) => {
   return (
     <nav className="navbar">
       <div className="nav_icon">
-        <i className="fa fa-bars" onClick={openSidebar}>
+        <i className="fa fa-bars">
           <FontAwesomeIcon icon={faBars} />
         </i>
       </div>

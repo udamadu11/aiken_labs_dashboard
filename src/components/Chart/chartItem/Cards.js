@@ -5,21 +5,41 @@ import {
   faStar,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  Card,
-  Typography,
-  IconButton,
-  CardContent,
-  CardHeader,
-} from "@material-ui/core";
-const Cards = (props) => {
+import { Card, IconButton, CardContent, CardHeader } from "@material-ui/core";
+
+import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
+import "./Cards.css";
+const Cards = ({ type, data }) => {
+  const { backgroundColor, label, dataSet } = data;
+  console.log(data);
+  let Type;
+  switch (type) {
+    case "Bar":
+      Type = Bar;
+      break;
+    case "Line":
+      Type = Line;
+      break;
+    case "Doughnut":
+      Type = Doughnut;
+      break;
+    case "Scatter":
+      Type = Scatter;
+      break;
+    case "PolarArea":
+      Type = PolarArea;
+      break;
+    default:
+      break;
+  }
   return (
     <div>
-      <Card>
+      <Card className="chart_card">
         <CardHeader
           title="Shrimp and Chorizo Paella"
+          className="chart_title"
           action={
-            <IconButton>
+            <IconButton className="chart_button">
               <FontAwesomeIcon icon={faStar} />
               <FontAwesomeIcon icon={faSearchPlus} />
               <FontAwesomeIcon icon={faEllipsisV} />
@@ -27,11 +47,23 @@ const Cards = (props) => {
           }
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
-          </Typography>
+          <Type
+            data={{
+              labels: label,
+              datasets: [
+                {
+                  label: "People",
+                  backgroundColor: backgroundColor,
+                  data: dataSet,
+                },
+              ],
+            }}
+            options={{
+              legend: { display: false },
+              title: { display: true, text: `Current state in ${type}` },
+              responsive: true,
+            }}
+          />
         </CardContent>
       </Card>
     </div>

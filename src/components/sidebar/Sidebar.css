@@ -40,7 +40,7 @@
   border-radius: 10px;
   padding: 5px;
 }
-.sidebar-responsive {
+.sidebar_responsive {
   display: inline !important;
   z-index: 9999 !important;
   left: 0 !important;
@@ -85,6 +85,9 @@
   margin-left: 10px;
   color: red;
 }
+.closeButton {
+  display: none;
+}
 @media only screen and (max-width: 978px) {
   #sidebar {
     display: none;
@@ -94,5 +97,18 @@
   }
   .sidebar-responsive {
     position: absolute;
+  }
+  .closeButton {
+    margin-left: 10px;
+    display: inline;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .closeButton {
+    margin-left: 10px;
+    display: inline;
+  }
+  #sidebar {
+    display: none;
   }
 }

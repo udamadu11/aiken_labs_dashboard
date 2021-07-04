@@ -15,9 +15,7 @@ const RND = ({ minWidth, minHeight, bounds }) => {
         minWidth={minWidth}
         minHeight={minHeight}
         bounds={bounds}
-      >
-        <Cards />
-      </Rnd>
+      ></Rnd>
     </div>
   );
 };
