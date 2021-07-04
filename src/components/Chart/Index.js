@@ -62,11 +62,21 @@ const Index = (props) => {
           </Rnd> */}
           <Grid container spacing={3}>
             <Grid item xs>
-              <Rnd>
-                <Cards type="Bar" data={data} />
+              <Rnd
+                default={{
+                  x: 0,
+                  y: 0,
+                }}
+              >
+                <Cards type="Bar" data={data} width={400} height={300} />
               </Rnd>
-              <Rnd>
-                <Cards type="Line" data={data} />
+              <Rnd
+                default={{
+                  x: 0,
+                  y: 310,
+                }}
+              >
+                <Cards type="Line" data={data} width={400} height={260} />
               </Rnd>
             </Grid>
             <Grid item xs></Grid>

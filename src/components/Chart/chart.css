@@ -1,5 +1,6 @@
 main {
   grid-area: main;
+  overflow-x: auto;
   overflow-y: auto;
 }
 .main_container {
@@ -48,7 +49,7 @@ main {
 .griditem {
   display: flex;
 }
-@media only screen and (max-width: 855px) {
+@media only screen and (max-width: 978px) {
   .chartContainer {
     grid-template-columns: 1fr;
     gap: 10px;

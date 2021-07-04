@@ -64,6 +64,7 @@ const Cards = ({ type, data, width, height }) => {
                 },
               ],
             }}
+            width={300}
             options={{
               legend: { display: false },
               title: { display: true, text: `Current state in ${type}` },
