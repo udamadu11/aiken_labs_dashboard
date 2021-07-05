@@ -5,13 +5,7 @@ import {
   faStar,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  Card,
-  IconButton,
-  CardContent,
-  CardHeader,
-  width,
-} from "@material-ui/core";
+import { Card, IconButton, CardContent, CardHeader } from "@material-ui/core";
 
 import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
 import "./Cards.css";

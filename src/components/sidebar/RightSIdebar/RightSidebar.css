@@ -41,6 +41,7 @@
 }
 .search_input {
   padding: 50px;
+  display: flex;
 }
 .search_input > input {
   width: 100%;
@@ -48,9 +49,24 @@
   border-radius: 20px;
 }
 .chart_details {
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
+}
+.plusButton {
+  margin-left: 10px;
+  align-self: center;
+  color: aliceblue;
+  font-size: 24px;
+}
+.Modal {
+  width: 400px;
+  height: 400px;
+  align-items: center;
+  margin: auto;
+}
+.Modal_card {
+  padding: 10px;
 }
 @media only screen and (max-width: 480px) {
   .rightSidebar {
