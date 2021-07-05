@@ -2,7 +2,6 @@ import React from "react";
 import { Card, CardContent, CardHeader, Typography } from "@material-ui/core";
 import "./CardComponent.css";
 const CardComponent = ({ type, img }) => {
-  console.log(type);
   return (
     <div>
       <Card className="chart_card" style={{ width: 200, height: 160 }}>
