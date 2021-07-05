@@ -60,7 +60,7 @@ const Index = (props) => {
           <Rnd>
             <Cards type="PolarArea" data={data} />
           </Rnd> */}
-          <Grid container spacing={3}>
+          {/* <Grid container spacing={3}>
             <Grid item xs>
               <Rnd
                 default={{
@@ -80,7 +80,7 @@ const Index = (props) => {
               </Rnd>
             </Grid>
             <Grid item xs></Grid>
-          </Grid>
+          </Grid> */}
         </div>
       </div>
     </main>
