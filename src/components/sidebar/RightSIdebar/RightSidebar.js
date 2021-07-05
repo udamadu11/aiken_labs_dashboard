@@ -13,9 +13,7 @@ import {
   Button,
   Input,
   Select,
-  FormControl,
   MenuItem,
-  InputLabel,
 } from "@material-ui/core";
 
 //component
@@ -25,12 +23,8 @@ import CardComponent from "../sidebarComponent/CardComponent";
 const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
-  const [age, setAge] = React.useState("");
-  const [openModal, setOpenModal] = React.useState(false);
-
-  const handleChangeAge = (event) => {
-    setAge(event.target.value);
-  };
+  const [openModal, setOpenModal] = useState(false);
+  const [barName, setBarName] = useState("");
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -51,12 +45,17 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const handleClose = () => {
     setOpen(false);
   };
+  const onChangeBarName = (event) => {
+    setBarName(event.target.value);
+  };
 
   const searchFilter = ChartNames.filter((chart) =>
     chart.type.toLowerCase().includes(search.toLowerCase())
   );
+
   console.log("chart", ChartNames);
   console.log("search", searchFilter);
+  console.log("name", barName);
   return (
     <div className={isOpenSidebar ? "rightSidebar" : "is-closed"}>
       <div className="sidebar-toggle">
@@ -95,41 +94,60 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
                 placeholder="Chart Name..."
                 type="text"
                 onChange={handleChange}
+                style={{ width: 350 }}
               />
               <div>
-                <FormControl style={{ marginBottom: 5 }}>
-                  <Select
-                    open={openModal}
-                    onClose={handleCloseModal}
-                    onOpen={handleOpenModal}
-                    value={age}
-                    onChange={handleChangeAge}
+                <Select
+                  fullWidth
+                  open={openModal}
+                  onClose={handleCloseModal}
+                  onOpen={handleOpenModal}
+                  value={barName}
+                  onChange={onChangeBarName}
+                  style={{ marginBottom: 10 }}
+                >
+                  {ChartNames.map((name) => {
+                    return (
+                      <MenuItem value={name.type} key={name.id}>
+                        {name.type}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+                <Select
+                  fullWidth
+                  open={openModal}
+                  onClose={handleCloseModal}
+                  onOpen={handleOpenModal}
+                  value={barName}
+                  onChange={onChangeBarName}
+                  style={{ marginBottom: 10 }}
+                >
+                  {ChartNames.map((name) => {
+                    return (
+                      <MenuItem value={name.dataSet} key={name.id}>
+                        {name.id}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+                <div className="button">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    // onClick={handleSubmit}
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
+                    Add
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={handleClose}
+                  >
+                    Close
+                  </Button>
+                </div>
               </div>
-            </div>
-            <div className="button">
-              <Button
-                variant="contained"
-                color="primary"
-                // onClick={handleSubmit}
-              >
-                Add
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={handleClose}
-              >
-                Close
-              </Button>
             </div>
           </CardContent>
         </Card>

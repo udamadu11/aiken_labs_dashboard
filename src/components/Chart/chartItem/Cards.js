@@ -11,7 +11,6 @@ import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
 import "./Cards.css";
 const Cards = ({ type, data, width, height }) => {
   const { backgroundColor, label, dataSet } = data;
-  console.log(data);
   let Type;
   switch (type) {
     case "Bar":

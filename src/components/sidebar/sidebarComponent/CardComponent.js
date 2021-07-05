@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography } from "@material-ui/core";
 import "./CardComponent.css";
 const CardComponent = ({ type, img }) => {
   return (

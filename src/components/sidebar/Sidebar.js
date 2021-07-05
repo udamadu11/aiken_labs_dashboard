@@ -17,7 +17,6 @@ import {
 
 const Sidebar = ({ isOpen, toggle }) => {
   const [add, setAdd] = useState([]);
-  console.log(add);
   return (
     <div className={isOpen ? "sidebar_responsive" : ""} id="sidebar">
       <div className="sidebar_title">

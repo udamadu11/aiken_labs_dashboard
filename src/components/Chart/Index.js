@@ -1,7 +1,7 @@
 import React from "react";
 import "./chart.css";
 import Cards from "./chartItem/Cards";
-import { Rnd } from "react-rnd";
+// import { Rnd } from "react-rnd";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Data } from "../../chart";
@@ -10,8 +10,8 @@ import {
   faShareAlt,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import RND from "./chartItem/RND";
-import { Grid } from "@material-ui/core";
+// import RND from "./chartItem/RND";
+// import { Grid } from "@material-ui/core";
 
 const Index = (props) => {
   let data = Data.find((e) => e.id === 1);
