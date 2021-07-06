@@ -1,7 +1,9 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography, IconButton } from "@material-ui/core";
 import "./CardComponent.css";
 import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const CardComponent = ({
   data: {
@@ -37,7 +39,7 @@ const CardComponent = ({
         className="chart_card"
         style={{
           width: 180,
-          height: 200,
+          height: 220,
           backgroundColor: "white",
           opacity: 0.7,
         }}
@@ -45,10 +47,14 @@ const CardComponent = ({
         <Typography
           className="chart_title"
           variant="subtitle1"
-          style={{ marginLeft: 20 }}
+          style={{ marginLeft: 20, marginRight: 20 }}
         >
           {chartName}
+          <IconButton className="iconButton">
+            <FontAwesomeIcon icon={faBars} />
+          </IconButton>
         </Typography>
+
         <CardContent>
           <Type
             data={{

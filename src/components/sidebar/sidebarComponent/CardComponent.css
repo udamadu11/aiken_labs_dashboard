@@ -1,0 +1,7 @@
+.chart_card {
+  display: flex;
+  flex-direction: column;
+}
+.iconButton {
+  visibility: hidden;
+}
