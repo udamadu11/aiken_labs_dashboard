@@ -1,26 +1,26 @@
 export const ChartData = [
   {
     id: 1,
-    type: "Gender",
+    name: "Gender",
     lable: ["Male", "Female"],
-    dataSet: [1000000, 200000],
+    set: [1000, 2000],
   },
   {
     id: 2,
-    type: "Location",
+    name: "Location",
     lable: ["Galle", "Mathara", "Colombo", "Kandy", "Jaffna", "Ampara"],
-    dataSet: [1000000, 200000, 300000, 400000, 6896896, 769966],
+    set: [100, 200, 300, 400, 689, 769],
   },
   {
     id: 3,
-    type: "Sales",
+    name: "Sales",
     lable: ["2015", "2016", "2017", "2018", "2019", "2020", "2021"],
-    dataSet: [1000000, 200000, 300000, 400000, 6896896, 769966, 43434344],
+    set: [1000, 2000, 3000, 4000, 6896, 7699, 4343],
   },
   {
     id: 4,
-    type: "Monthly Sales",
+    name: "Monthly Sales",
     lable: ["Jan", "Feb", "March", "April", "May", "Jun", "July"],
-    dataSet: [100000, 20000, 30000, 40000, 689689, 76996, 4343434],
+    set: [1000, 200, 3000, 4000, 689, 769, 434],
   },
 ];

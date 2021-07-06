@@ -15,7 +15,6 @@ import {
 
 const Index = (props) => {
   let data = Data.find((e) => e.id === 1);
-  console.log(data);
   return (
     <main>
       <div className="main_container">

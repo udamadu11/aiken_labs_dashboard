@@ -86,7 +86,7 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
       },
     ]);
   };
-  console.log(addChart);
+
   return (
     <div className={isOpenSidebar ? "rightSidebar" : "is-closed"}>
       <div className="sidebar-toggle">
@@ -104,10 +104,10 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
           </IconButton>
         </div>
         <div className="chart_details">
-          {searchFilter.map((data) => {
+          {addChart.map((datas) => {
             return (
               <div>
-                <CardComponent key={data.id} type={data.type} img={data.img} />
+                <CardComponent key={datas.id} data={datas} />
               </div>
             );
           })}
@@ -157,7 +157,7 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
                   {ChartData.map((chartItem) => {
                     return (
                       <MenuItem value={chartItem} key={chartItem.id}>
-                        {chartItem.type}
+                        {chartItem.name}
                       </MenuItem>
                     );
                   })}
