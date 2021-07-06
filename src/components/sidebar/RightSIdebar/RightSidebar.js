@@ -18,14 +18,20 @@ import {
 
 //component
 import { ChartNames } from "../../../Data/ChartNames";
+import { ChartData } from "../../../Data/ChartData";
 import CardComponent from "../sidebarComponent/CardComponent";
 
 const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const [search, setSearch] = useState("");
+  const [input, setInput] = useState("");
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [DataModal, setDataModal] = useState(false);
   const [barName, setBarName] = useState("");
+  const [charData, setChartData] = useState("");
+  const [addChart, setAddChart] = useState([]);
 
+  //chart name
   const handleCloseModal = () => {
     setOpenModal(false);
   };
@@ -33,11 +39,14 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const handleOpenModal = () => {
     setOpenModal(true);
   };
-
+  const onChangeBarName = (event) => {
+    setBarName(event.target.value);
+  };
+  //search
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
-
+  //side bar open /close
   const handleOpen = () => {
     setOpen(true);
   };
@@ -45,17 +54,39 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const onChangeBarName = (event) => {
-    setBarName(event.target.value);
+  //Chart Data
+  const handleCloseDataModal = () => {
+    setDataModal(false);
   };
 
+  const handleOpenDataModal = () => {
+    setDataModal(true);
+  };
+  const onChangeData = (event) => {
+    setChartData(event.target.value);
+  };
+  //input
+  const handleChangeInput = (e) => {
+    setInput(e.target.value);
+  };
+  //filter search data
   const searchFilter = ChartNames.filter((chart) =>
     chart.type.toLowerCase().includes(search.toLowerCase())
   );
-
-  console.log("chart", ChartNames);
-  console.log("search", searchFilter);
-  console.log("name", barName);
+  //submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setAddChart([
+      ...addChart,
+      {
+        id: Math.round(Math.random() * 1000),
+        type: barName,
+        chartName: input,
+        DataSet: charData,
+      },
+    ]);
+  };
+  console.log(addChart);
   return (
     <div className={isOpenSidebar ? "rightSidebar" : "is-closed"}>
       <div className="sidebar-toggle">
@@ -93,7 +124,7 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
                 className="input"
                 placeholder="Chart Name..."
                 type="text"
-                onChange={handleChange}
+                onChange={handleChangeInput}
                 style={{ width: 350 }}
               />
               <div>
@@ -116,17 +147,17 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
                 </Select>
                 <Select
                   fullWidth
-                  open={openModal}
-                  onClose={handleCloseModal}
-                  onOpen={handleOpenModal}
-                  value={barName}
-                  onChange={onChangeBarName}
+                  open={DataModal}
+                  onClose={handleCloseDataModal}
+                  onOpen={handleOpenDataModal}
+                  value={charData}
+                  onChange={onChangeData}
                   style={{ marginBottom: 10 }}
                 >
-                  {ChartNames.map((name) => {
+                  {ChartData.map((chartItem) => {
                     return (
-                      <MenuItem value={name.dataSet} key={name.id}>
-                        {name.id}
+                      <MenuItem value={chartItem} key={chartItem.id}>
+                        {chartItem.type}
                       </MenuItem>
                     );
                   })}
@@ -135,7 +166,7 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
                   <Button
                     variant="contained"
                     color="primary"
-                    // onClick={handleSubmit}
+                    onClick={handleSubmit}
                   >
                     Add
                   </Button>
