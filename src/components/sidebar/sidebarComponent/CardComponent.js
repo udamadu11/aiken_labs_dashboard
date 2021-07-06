@@ -3,13 +3,14 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 import "./CardComponent.css";
 import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
 
-const CardComponent = ({ data }) => {
-  const {
+const CardComponent = ({
+  data: {
     type,
     chartName,
     DataSet: { name, set, lable },
-  } = data;
-  console.log(type, chartName, name, set, lable);
+  },
+}) => {
+  console.log(set);
   let Type;
   switch (type) {
     case "Bar":
@@ -32,7 +33,15 @@ const CardComponent = ({ data }) => {
   }
   return (
     <div>
-      <Card className="chart_card" style={{ width: 200, height: 160 }}>
+      <Card
+        className="chart_card"
+        style={{
+          width: 180,
+          height: 200,
+          backgroundColor: "white",
+          opacity: 0.7,
+        }}
+      >
         <Typography
           className="chart_title"
           variant="subtitle1"
@@ -43,17 +52,23 @@ const CardComponent = ({ data }) => {
         <CardContent>
           <Type
             data={{
+              labels: lable,
               datasets: [
                 {
-                  labe: "",
+                  label: name,
                   data: set,
+                  backgroundColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)",
+                    "rgb(255, 205, 86)",
+                  ],
                 },
               ],
             }}
-            width={300}
+            width={200}
             options={{
               legend: { display: false },
-              title: { display: false, text: `Current state in ${type}` },
+              title: { display: false },
               responsive: true,
             }}
           />
