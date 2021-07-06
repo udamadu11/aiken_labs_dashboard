@@ -53,7 +53,13 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
           {searchFilter.map((datas) => {
             return (
               <div>
-                <CardComponent key={datas.id} data={datas} />
+                <CardComponent
+                  key={datas.id}
+                  datas={datas}
+                  data={datas}
+                  addChart={addChart}
+                  setAddChart={setAddChart}
+                />
               </div>
             );
           })}

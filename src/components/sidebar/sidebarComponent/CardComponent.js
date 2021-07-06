@@ -1,9 +1,24 @@
-import React from "react";
-import { Card, CardContent, Typography, IconButton } from "@material-ui/core";
+import React, { useState } from "react";
+import {} from "@material-ui/core";
 import "./CardComponent.css";
 import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+//component
+import { ChartNames } from "../../../Data/ChartNames";
+import { ChartData } from "../../../Data/ChartData";
+//material
+import {
+  CardContent,
+  Typography,
+  IconButton,
+  Modal,
+  Card,
+  Button,
+  Input,
+  Select,
+  MenuItem,
+} from "@material-ui/core";
 
 const CardComponent = ({
   data: {
@@ -11,6 +26,9 @@ const CardComponent = ({
     chartName,
     DataSet: { name, set, lable },
   },
+  addChart,
+  setAddChart,
+  datas,
 }) => {
   console.log(set);
   let Type;
@@ -33,6 +51,60 @@ const CardComponent = ({
     default:
       break;
   }
+  const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [DataModal, setDataModal] = useState(false);
+  const [input, setInput] = useState("");
+  const [barName, setBarName] = useState("");
+  const [charData, setChartData] = useState("");
+  //chart name
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const onChangeBarName = (event) => {
+    setBarName(event.target.value);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  //Chart Data
+  const handleCloseDataModal = () => {
+    setDataModal(false);
+  };
+
+  const handleOpenDataModal = () => {
+    setDataModal(true);
+  };
+  const onChangeData = (event) => {
+    setChartData(event.target.value);
+  };
+  //input
+  const handleChangeInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  //submit
+  const handleSubmit = (el) => {
+    let item = addChart.find((e) => e.id === datas.id);
+    if (item !== 0) {
+      item.type = barName;
+      item.chartName = input;
+      item.DataSet = charData;
+      setAddChart([...addChart]);
+    }
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  //delete
+  const handleDelete = () => {
+    setAddChart(addChart.filter((e) => e.id !== datas.id));
+  };
   return (
     <div>
       <Card className="chart_card">
@@ -67,13 +139,13 @@ const CardComponent = ({
             }}
           />
           <div className="iconButton">
-            <IconButton>
+            <IconButton onClick={handleOpen}>
               <FontAwesomeIcon
                 icon={faEdit}
                 style={{ fontSize: 20, color: "blue" }}
               />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={handleDelete}>
               <FontAwesomeIcon
                 icon={faTrash}
                 style={{ fontSize: 20, color: "red" }}
@@ -82,6 +154,76 @@ const CardComponent = ({
           </div>
         </CardContent>
       </Card>
+      <Modal open={open} onClose={handleClose} className="Modal">
+        <Card className="Modal_card">
+          <CardContent>
+            <Typography color="textSecondary" gutterBottom>
+              Add chart
+            </Typography>
+            <div>
+              <Input
+                className="input"
+                placeholder="Chart Name..."
+                type="text"
+                onChange={handleChangeInput}
+                style={{ width: 350 }}
+              />
+              <div>
+                <Select
+                  fullWidth
+                  open={openModal}
+                  onClose={handleCloseModal}
+                  onOpen={handleOpenModal}
+                  value={barName}
+                  onChange={onChangeBarName}
+                  style={{ marginBottom: 10 }}
+                >
+                  {ChartNames.map((name) => {
+                    return (
+                      <MenuItem value={name.type} key={name.id}>
+                        {name.type}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+                <Select
+                  fullWidth
+                  open={DataModal}
+                  onClose={handleCloseDataModal}
+                  onOpen={handleOpenDataModal}
+                  value={charData}
+                  onChange={onChangeData}
+                  style={{ marginBottom: 10 }}
+                >
+                  {ChartData.map((chartItem) => {
+                    return (
+                      <MenuItem value={chartItem} key={chartItem.id}>
+                        {chartItem.name}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+                <div className="button">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleSubmit}
+                  >
+                    Add
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={handleClose}
+                  >
+                    Close
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </Modal>
     </div>
   );
 };
