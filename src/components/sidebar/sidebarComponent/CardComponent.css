@@ -1,7 +1,17 @@
 .chart_card {
   display: flex;
   flex-direction: column;
+  width: 250px;
+  height: auto;
+  background-color: "white";
+  opacity: 0.9;
 }
 .iconButton {
+  margin: -20px;
+  display: flex;
+  justify-content: space-evenly;
   visibility: hidden;
+}
+.chart_card:hover .iconButton {
+  visibility: visible;
 }

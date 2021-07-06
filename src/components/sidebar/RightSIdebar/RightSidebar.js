@@ -70,7 +70,7 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
     setInput(e.target.value);
   };
   //filter search data
-  const searchFilter = ChartNames.filter((chart) =>
+  const searchFilter = addChart.filter((chart) =>
     chart.type.toLowerCase().includes(search.toLowerCase())
   );
   //submit
@@ -104,7 +104,7 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
           </IconButton>
         </div>
         <div className="chart_details">
-          {addChart.map((datas) => {
+          {searchFilter.map((datas) => {
             return (
               <div>
                 <CardComponent key={datas.id} data={datas} />

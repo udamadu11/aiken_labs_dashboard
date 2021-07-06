@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, IconButton } from "@material-ui/core";
 import "./CardComponent.css";
 import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const CardComponent = ({
   data: {
@@ -35,30 +35,24 @@ const CardComponent = ({
   }
   return (
     <div>
-      <Card
-        className="chart_card"
-        style={{
-          width: 180,
-          height: 220,
-          backgroundColor: "white",
-          opacity: 0.7,
-        }}
-      >
+      <Card className="chart_card">
         <Typography
           className="chart_title"
           variant="subtitle1"
           style={{ marginLeft: 20, marginRight: 20 }}
         >
           {chartName}
-          <IconButton className="iconButton">
-            <FontAwesomeIcon icon={faBars} />
-          </IconButton>
         </Typography>
 
         <CardContent>
           <Type
             data={{
               labels: lable,
+              options: {
+                legend: { display: false },
+                responsive: true,
+                maintainAspectRatio: false,
+              },
               datasets: [
                 {
                   label: name,
@@ -71,13 +65,21 @@ const CardComponent = ({
                 },
               ],
             }}
-            width={200}
-            options={{
-              legend: { display: false },
-              title: { display: false },
-              responsive: true,
-            }}
           />
+          <div className="iconButton">
+            <IconButton>
+              <FontAwesomeIcon
+                icon={faEdit}
+                style={{ fontSize: 20, color: "blue" }}
+              />
+            </IconButton>
+            <IconButton>
+              <FontAwesomeIcon
+                icon={faTrash}
+                style={{ fontSize: 20, color: "red" }}
+              />
+            </IconButton>
+          </div>
         </CardContent>
       </Card>
     </div>
