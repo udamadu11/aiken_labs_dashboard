@@ -31,7 +31,6 @@ const Dashboard = ({ icon1, icon2, icon3, name, add, setAdd, ad }) => {
     let item = add.find((e) => e.id === ad.id);
     if (item !== 0) {
       item.name = input;
-      console.log(item);
       setAdd([...add]);
     }
   };
