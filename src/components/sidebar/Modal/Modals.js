@@ -16,7 +16,16 @@ import {
 import { ChartNames } from "../../../Data/ChartNames";
 import { ChartData } from "../../../Data/ChartData";
 
-const Modals = ({ addChart, setAddChart, open, setOpen }) => {
+const Modals = ({
+  addChart,
+  setAddChart,
+  open,
+  setOpen,
+  undo,
+  setUndo,
+  redo,
+  setRedo,
+}) => {
   const [openModal, setOpenModal] = useState(false);
   const [DataModal, setDataModal] = useState(false);
   const [input, setInput] = useState("");
@@ -56,15 +65,14 @@ const Modals = ({ addChart, setAddChart, open, setOpen }) => {
   //submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    setAddChart([
-      ...addChart,
-      {
-        id: Math.round(Math.random() * 1000),
-        type: barName,
-        chartName: input,
-        DataSet: charData,
-      },
-    ]);
+    let newItem = {
+      id: Math.round(Math.random() * 1000),
+      type: barName,
+      chartName: input,
+      DataSet: charData,
+    };
+    setAddChart([...addChart, newItem]);
+    setUndo([...undo, newItem]);
   };
   return (
     <Modal open={open} onClose={handleClose} className="Modal">

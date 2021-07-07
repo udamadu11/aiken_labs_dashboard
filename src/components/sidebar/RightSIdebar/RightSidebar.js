@@ -7,6 +7,7 @@ import {
   // faTimes,
   faPlusCircle,
   faChartBar,
+  faUndo,
 } from "@fortawesome/free-solid-svg-icons";
 import { IconButton } from "@material-ui/core";
 
@@ -18,8 +19,10 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const [addChart, setAddChart] = useState([]);
+  const [undo, setUndo] = useState([]);
+  const [redo, setRedo] = useState([]);
 
-  // //search
+  //search
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -28,11 +31,16 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const handleOpen = () => {
     setOpen(true);
   };
-
+  //filter by search name
   const searchFilter = addChart.filter((chart) =>
     chart.type.toLowerCase().includes(search.toLowerCase())
   );
-
+  //undo
+  const undoButton = () => {
+    const lastElement = undo[undo.length - 1];
+    setAddChart(addChart.filter((e) => e.id !== lastElement.id));
+    setUndo(undo.filter((e) => e.id !== lastElement.id));
+  };
   return (
     <div className={isOpenSidebar ? "rightSidebar" : "is-closed"}>
       <div className="sidebar-toggle">
@@ -48,6 +56,9 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
           <IconButton onClick={handleOpen}>
             <FontAwesomeIcon icon={faPlusCircle} className="plusButton" />
           </IconButton>
+          <IconButton onClick={undoButton}>
+            <FontAwesomeIcon icon={faUndo} className="plusButton" />
+          </IconButton>
         </div>
         <div className="chart_details">
           {searchFilter.map((datas) => {
@@ -59,6 +70,10 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
                   data={datas}
                   addChart={addChart}
                   setAddChart={setAddChart}
+                  undo={undo}
+                  setUndo={setUndo}
+                  redo={redo}
+                  setRedo={setRedo}
                 />
               </div>
             );
@@ -70,6 +85,10 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
         setAddChart={setAddChart}
         open={open}
         setOpen={setOpen}
+        undo={undo}
+        setUndo={setUndo}
+        redo={redo}
+        setRedo={setRedo}
       />
     </div>
   );

@@ -29,6 +29,10 @@ const CardComponent = ({
   addChart,
   setAddChart,
   datas,
+  undo,
+  setUndo,
+  redo,
+  setRedo,
 }) => {
   console.log(set);
   let Type;
@@ -96,8 +100,10 @@ const CardComponent = ({
       item.chartName = input;
       item.DataSet = charData;
       setAddChart([...addChart]);
+      setUndo([...undo, item]);
     }
   };
+  console.log(undo);
   const handleOpen = () => {
     setOpen(true);
   };
