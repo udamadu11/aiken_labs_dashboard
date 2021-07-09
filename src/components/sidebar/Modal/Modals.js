@@ -21,8 +21,6 @@ const Modals = ({
   setAddChart,
   open,
   setOpen,
-  undo,
-  setUndo,
   history,
   setHistory,
 }) => {

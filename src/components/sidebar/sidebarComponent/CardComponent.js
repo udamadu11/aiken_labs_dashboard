@@ -29,8 +29,8 @@ const CardComponent = ({
   addChart,
   setAddChart,
   datas,
-  undo,
-  setUndo,
+  history,
+  setHistory,
 }) => {
   console.log(set);
   let Type;
@@ -93,20 +93,24 @@ const CardComponent = ({
   //submit
   const handleSubmit = (el) => {
     let item = addChart.find((e) => e.id === datas.id);
+    setHistory([...history, item]);
     if (item !== 0) {
       item.type = barName;
       item.chartName = input;
       item.DataSet = charData;
       setAddChart([...addChart]);
-      setUndo([...undo, item]);
     }
+    console.log("history", history);
+    console.log(addChart);
   };
-  console.log(undo);
+  console.log("rl", history);
   const handleOpen = () => {
     setOpen(true);
   };
   //delete
   const handleDelete = () => {
+    let pos = addChart.filter((e) => e.id === datas.id);
+    setHistory([...history, pos]);
     setAddChart(addChart.filter((e) => e.id !== datas.id));
   };
   return (
