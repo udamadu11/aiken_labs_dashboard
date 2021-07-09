@@ -20,7 +20,9 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   const [open, setOpen] = useState(false);
   const [addChart, setAddChart] = useState([]);
   const [undo, setUndo] = useState([]);
-  const [redo, setRedo] = useState([]);
+
+  const [history, setHistory] = useState([]);
+  let step = 0;
 
   //search
   const handleChange = (e) => {
@@ -37,9 +39,11 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   );
   //undo
   const undoButton = () => {
-    const lastElement = undo[undo.length - 1];
-    setAddChart(addChart.filter((e) => e.id !== lastElement.id));
-    setUndo(undo.filter((e) => e.id !== lastElement.id));
+    const lastElement = history.slice(0, -1);
+    setHistory(lastElement);
+    setAddChart(history);
+    console.log("l", history);
+    console.log("last", lastElement);
   };
   return (
     <div className={isOpenSidebar ? "rightSidebar" : "is-closed"}>
@@ -72,8 +76,6 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
                   setAddChart={setAddChart}
                   undo={undo}
                   setUndo={setUndo}
-                  redo={redo}
-                  setRedo={setRedo}
                 />
               </div>
             );
@@ -87,8 +89,9 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
         setOpen={setOpen}
         undo={undo}
         setUndo={setUndo}
-        redo={redo}
-        setRedo={setRedo}
+        history={history}
+        setHistory={setHistory}
+        step={step}
       />
     </div>
   );

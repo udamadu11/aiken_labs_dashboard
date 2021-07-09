@@ -31,8 +31,6 @@ const CardComponent = ({
   datas,
   undo,
   setUndo,
-  redo,
-  setRedo,
 }) => {
   console.log(set);
   let Type;

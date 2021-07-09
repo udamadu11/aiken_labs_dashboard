@@ -23,8 +23,8 @@ const Modals = ({
   setOpen,
   undo,
   setUndo,
-  redo,
-  setRedo,
+  history,
+  setHistory,
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [DataModal, setDataModal] = useState(false);
@@ -65,14 +65,23 @@ const Modals = ({
   //submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    let newItem = {
+    // let newItem = {
+    //   id: Math.round(Math.random() * 1000),
+    //   type: barName,
+    //   chartName: input,
+    //   DataSet: charData,
+    // };
+    // setAddChart([...addChart, newItem]);
+    // setUndo([...undo, newItem]);
+    // history = history.toString().slice(0, step + 2);
+    const pos = {
       id: Math.round(Math.random() * 1000),
       type: barName,
       chartName: input,
       DataSet: charData,
     };
-    setAddChart([...addChart, newItem]);
-    setUndo([...undo, newItem]);
+    setAddChart([...addChart, pos]);
+    setHistory([...history, pos]);
   };
   return (
     <Modal open={open} onClose={handleClose} className="Modal">
