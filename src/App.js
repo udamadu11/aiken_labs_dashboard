@@ -9,7 +9,7 @@ import RightSidebar from "./components/sidebar/RightSIdebar/RightSidebar";
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
-
+  const [addChart, setAddChart] = useState([]);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -19,8 +19,13 @@ const App = () => {
   return (
     <div className="container">
       <Navbar toggle={toggle} />
-      <Index />
-      <RightSidebar isOpenSidebar={isOpenSidebar} toggle2={toggle2} />
+      <Index addChart={addChart} setAddChart={setAddChart} />
+      <RightSidebar
+        isOpenSidebar={isOpenSidebar}
+        toggle2={toggle2}
+        addChart={addChart}
+        setAddChart={setAddChart}
+      />
       <Sidebar isOpen={isOpen} toggle={toggle} />
     </div>
   );

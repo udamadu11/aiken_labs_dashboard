@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearchPlus,
   faStar,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
-import { Card, IconButton, CardContent, CardHeader } from "@material-ui/core";
+import {
+  Card,
+  IconButton,
+  CardContent,
+  CardHeader,
+  Modal,
+  Typography,
+} from "@material-ui/core";
 
 import { Line, Bar, Doughnut, Scatter, PolarArea } from "react-chartjs-2";
 import "./Cards.css";
-const Cards = ({ type, data, width, height }) => {
-  const { backgroundColor, label, dataSet } = data;
+const Cards = ({ data }) => {
+  const [open, setOpen] = useState(false);
+  //modal open/close
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const {
+    backgroundColor,
+    label,
+    DataSet: { name, set, lable },
+    type,
+    chartName,
+  } = data;
   let Type;
   switch (type) {
     case "Bar":
@@ -33,39 +55,79 @@ const Cards = ({ type, data, width, height }) => {
   }
   return (
     <div>
-      <Card className="chart_card" style={{ width: width, height: height }}>
+      <Card className="chart_card">
         <CardHeader
-          title="Shrimp and Chorizo Paella"
-          className="chart_title"
+          subheader={chartName}
           action={
-            <IconButton className="chart_button">
-              <FontAwesomeIcon icon={faStar} />
-              <FontAwesomeIcon icon={faSearchPlus} />
-              <FontAwesomeIcon icon={faEllipsisV} />
-            </IconButton>
+            <div>
+              <IconButton>
+                <FontAwesomeIcon icon={faStar} style={{ fontSize: 16 }} />
+              </IconButton>
+              <IconButton>
+                <FontAwesomeIcon
+                  icon={faSearchPlus}
+                  style={{ fontSize: 16 }}
+                  onClick={handleOpen}
+                />
+              </IconButton>
+              <IconButton>
+                <FontAwesomeIcon icon={faEllipsisV} style={{ fontSize: 16 }} />
+              </IconButton>
+            </div>
           }
         />
         <CardContent>
           <Type
             data={{
-              labels: label,
+              labels: lable,
+              options: {
+                legend: { display: false },
+                responsive: true,
+                maintainAspectRatio: false,
+              },
               datasets: [
                 {
-                  label: "People",
-                  backgroundColor: backgroundColor,
-                  data: dataSet,
+                  label: name,
+                  data: set,
+                  backgroundColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)",
+                    "rgb(255, 205, 86)",
+                  ],
                 },
               ],
-            }}
-            width={300}
-            options={{
-              legend: { display: false },
-              title: { display: true, text: `Current state in ${type}` },
-              responsive: true,
             }}
           />
         </CardContent>
       </Card>
+      <Modal open={open} onClose={handleClose} className="Modal">
+        <Card className="Modal_card">
+          <CardHeader subheader={chartName} />
+          <CardContent>
+            <Type
+              data={{
+                labels: lable,
+                options: {
+                  legend: { display: false },
+                  responsive: true,
+                  maintainAspectRatio: false,
+                },
+                datasets: [
+                  {
+                    label: name,
+                    data: set,
+                    backgroundColor: [
+                      "rgb(255, 99, 132)",
+                      "rgb(54, 162, 235)",
+                      "rgb(255, 205, 86)",
+                    ],
+                  },
+                ],
+              }}
+            />
+          </CardContent>
+        </Card>
+      </Modal>
     </div>
   );
 };

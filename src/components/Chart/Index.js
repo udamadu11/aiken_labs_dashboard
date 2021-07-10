@@ -13,7 +13,7 @@ import {
 // import RND from "./chartItem/RND";
 // import { Grid } from "@material-ui/core";
 
-const Index = (props) => {
+const Index = ({ addChart, setAddChart }) => {
   let data = Data.find((e) => e.id === 1);
   return (
     <main>
@@ -35,51 +35,18 @@ const Index = (props) => {
         </div>
 
         <div className="main_cards">
-          {/* <RND minWidth={300} minHeight={300}>
-            {<Cards />}
-          </RND>
-          <RND minWidth={300} minHeight={300}>
-            {<Cards />}
-          </RND> */}
-          {/* <RND minWidth={300} minHeight={300} data={data} /> */}
-          {/* <Cards type="Bar" data={data} />
-          <Cards type="Line" data={data} />
-          <Cards type="Doughnut" data={data} />
-          <Cards type="Scatter" data={data} />
-          <Cards type="PolarArea" data={data} /> */}
-          {/* <Rnd>
-            <Cards type="Bar" data={data} />
-          </Rnd>
-          <Rnd>
-            <Cards type="Line" data={data} />
-          </Rnd>
-          <Rnd>
-            <Cards type="Doughnut" data={data} />
-          </Rnd>
-          <Rnd>
-            <Cards type="PolarArea" data={data} />
-          </Rnd> */}
-          {/* <Grid container spacing={3}>
-            <Grid item xs>
-              <Rnd
-                default={{
-                  x: 0,
-                  y: 0,
-                }}
-              >
-                <Cards type="Bar" data={data} width={400} height={300} />
-              </Rnd>
-              <Rnd
-                default={{
-                  x: 0,
-                  y: 310,
-                }}
-              >
-                <Cards type="Line" data={data} width={400} height={260} />
-              </Rnd>
-            </Grid>
-            <Grid item xs></Grid>
-          </Grid> */}
+          {addChart.map((datas) => {
+            return (
+              <div>
+                <Cards
+                  key={datas.id}
+                  data={datas}
+                  addChart={addChart}
+                  setAddChart={setAddChart}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </main>

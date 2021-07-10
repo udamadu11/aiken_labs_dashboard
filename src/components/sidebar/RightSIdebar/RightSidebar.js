@@ -15,11 +15,9 @@ import { IconButton } from "@material-ui/core";
 import CardComponent from "../sidebarComponent/CardComponent";
 import Modals from "../Modal/Modals";
 
-const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
+const RightSidebar = ({ isOpenSidebar, toggle2, addChart, setAddChart }) => {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
-  const [addChart, setAddChart] = useState([]);
-  // const [undo, setUndo] = useState([]);
 
   const [history, setHistory] = useState([]);
 
@@ -38,9 +36,11 @@ const RightSidebar = ({ isOpenSidebar, toggle2 }) => {
   );
   //undo
   const undoButton = () => {
-    const lastElement = history.slice(0, -1);
-    setHistory(lastElement);
-    setAddChart(lastElement);
+    // const lastElement =
+    setAddChart(history);
+    setHistory(history.slice(0, -1));
+    console.log("history", history);
+    console.log("chart", addChart);
   };
   return (
     <div className={isOpenSidebar ? "rightSidebar" : "is-closed"}>

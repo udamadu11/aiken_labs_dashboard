@@ -71,9 +71,6 @@ const CardComponent = ({
     setBarName(event.target.value);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
   //Chart Data
   const handleCloseDataModal = () => {
     setDataModal(false);
@@ -92,7 +89,7 @@ const CardComponent = ({
 
   //submit
   const handleSubmit = (el) => {
-    let item = addChart.find((e) => e.id === datas.id);
+    const item = addChart.find((e) => e.id === datas.id);
     setHistory([...history, item]);
     if (item !== 0) {
       item.type = barName;
@@ -100,18 +97,22 @@ const CardComponent = ({
       item.DataSet = charData;
       setAddChart([...addChart]);
     }
-    console.log("history", history);
-    console.log(addChart);
   };
-  console.log("rl", history);
+
   const handleOpen = () => {
     setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
   //delete
   const handleDelete = () => {
     let pos = addChart.filter((e) => e.id === datas.id);
-    setHistory([...history, pos]);
+    setHistory([...history, pos[0]]);
     setAddChart(addChart.filter((e) => e.id !== datas.id));
+
+    console.log("history", history);
+    console.log("chart", addChart);
   };
   return (
     <div>

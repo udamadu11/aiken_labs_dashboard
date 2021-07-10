@@ -62,16 +62,7 @@ const Modals = ({
 
   //submit
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // let newItem = {
-    //   id: Math.round(Math.random() * 1000),
-    //   type: barName,
-    //   chartName: input,
-    //   DataSet: charData,
-    // };
-    // setAddChart([...addChart, newItem]);
-    // setUndo([...undo, newItem]);
-    // history = history.toString().slice(0, step + 2);
+    setHistory([...addChart]);
     const pos = {
       id: Math.round(Math.random() * 1000),
       type: barName,
@@ -79,8 +70,8 @@ const Modals = ({
       DataSet: charData,
     };
     setAddChart([...addChart, pos]);
-    setHistory([...history, pos]);
   };
+
   return (
     <Modal open={open} onClose={handleClose} className="Modal">
       <Card className="Modal_card">
