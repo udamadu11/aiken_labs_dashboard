@@ -97,9 +97,9 @@ const CardComponent = ({
         item.chartName = input;
         item.DataSet = charData;
         setAddChart([...addChart]);
+      } else {
+        alert("empty");
       }
-    } else {
-      alert("Data feilds or field null");
     }
   };
 

@@ -61,19 +61,17 @@ const Index = ({ addChart, setAddChart, history, setHistory }) => {
         <div className="main_cards">
           {addChart.map((datas) => {
             return (
-              <div>
-                <Rnd>
-                  <Cards
-                    key={datas.id}
-                    data={datas}
-                    datas={datas}
-                    addChart={addChart}
-                    setAddChart={setAddChart}
-                    history={history}
-                    setHistory={setHistory}
-                  />
-                </Rnd>
-              </div>
+              <Rnd bounds="window">
+                <Cards
+                  key={datas.id}
+                  data={datas}
+                  datas={datas}
+                  addChart={addChart}
+                  setAddChart={setAddChart}
+                  history={history}
+                  setHistory={setHistory}
+                />
+              </Rnd>
             );
           })}
         </div>

@@ -72,69 +72,60 @@ const Cards = ({ data, addChart, setAddChart, history, setHistory, datas }) => {
   }
   return (
     <div>
-      <Paper elevation={0}>
-        <Card className="chart_card">
-          <CardHeader
-            subheader={chartName}
-            action={
-              <div>
-                <IconButton>
-                  <FontAwesomeIcon icon={faStar} style={{ fontSize: 16 }} />
-                </IconButton>
-                <IconButton onClick={handleOpen}>
-                  <FontAwesomeIcon
-                    icon={faSearchPlus}
-                    style={{ fontSize: 16 }}
-                  />
-                </IconButton>
-                <Button
-                  aria-controls="simple"
-                  aria-aria-haspopup="true"
-                  onClick={handleClickMenu}
-                >
-                  <FontAwesomeIcon
-                    icon={faEllipsisV}
-                    style={{ fontSize: 16 }}
-                  />
-                </Button>
-                <Menu
-                  id="simple"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleCloseMenu}
-                >
-                  <MenuItem>Edit</MenuItem>
-                  <MenuItem onClick={handleDelete}>Delete</MenuItem>
-                </Menu>
-              </div>
-            }
-          />
-          <CardContent>
-            <Type
-              data={{
-                labels: lable,
-                options: {
-                  legend: { display: false },
-                  responsive: true,
-                  maintainAspectRatio: false,
+      <Card>
+        <CardHeader
+          subheader={chartName}
+          action={
+            <div>
+              <IconButton>
+                <FontAwesomeIcon icon={faStar} style={{ fontSize: 16 }} />
+              </IconButton>
+              <IconButton onClick={handleOpen}>
+                <FontAwesomeIcon icon={faSearchPlus} style={{ fontSize: 16 }} />
+              </IconButton>
+              <Button
+                aria-controls="simple"
+                aria-aria-haspopup="true"
+                onClick={handleClickMenu}
+              >
+                <FontAwesomeIcon icon={faEllipsisV} style={{ fontSize: 16 }} />
+              </Button>
+              <Menu
+                id="simple"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleCloseMenu}
+              >
+                <MenuItem>Edit</MenuItem>
+                <MenuItem onClick={handleDelete}>Delete</MenuItem>
+              </Menu>
+            </div>
+          }
+        />
+        <CardContent>
+          <Type
+            data={{
+              labels: lable,
+              options: {
+                legend: { display: false },
+                responsive: true,
+              },
+              datasets: [
+                {
+                  label: name,
+                  data: set,
+                  backgroundColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)",
+                    "rgb(255, 205, 86)",
+                  ],
                 },
-                datasets: [
-                  {
-                    label: name,
-                    data: set,
-                    backgroundColor: [
-                      "rgb(255, 99, 132)",
-                      "rgb(54, 162, 235)",
-                      "rgb(255, 205, 86)",
-                    ],
-                  },
-                ],
-              }}
-            />
-          </CardContent>
-        </Card>
-      </Paper>
+              ],
+            }}
+          />
+        </CardContent>
+      </Card>
       <Modal open={open} onClose={handleClose} className="Modal">
         <Card className="Modal_card">
           <CardHeader subheader={chartName} />
