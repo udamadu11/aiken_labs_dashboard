@@ -10,6 +10,7 @@ const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
   const [addChart, setAddChart] = useState([]);
+  const [history, setHistory] = useState([]);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -19,12 +20,19 @@ const App = () => {
   return (
     <div className="container">
       <Navbar toggle={toggle} />
-      <Index addChart={addChart} setAddChart={setAddChart} />
+      <Index
+        addChart={addChart}
+        setAddChart={setAddChart}
+        history={history}
+        setHistory={setHistory}
+      />
       <RightSidebar
         isOpenSidebar={isOpenSidebar}
         toggle2={toggle2}
         addChart={addChart}
         setAddChart={setAddChart}
+        history={history}
+        setHistory={setHistory}
       />
       <Sidebar isOpen={isOpen} toggle={toggle} />
     </div>

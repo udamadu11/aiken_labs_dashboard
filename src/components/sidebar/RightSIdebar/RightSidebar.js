@@ -15,11 +15,16 @@ import { IconButton } from "@material-ui/core";
 import CardComponent from "../sidebarComponent/CardComponent";
 import Modals from "../Modal/Modals";
 
-const RightSidebar = ({ isOpenSidebar, toggle2, addChart, setAddChart }) => {
+const RightSidebar = ({
+  isOpenSidebar,
+  toggle2,
+  addChart,
+  setAddChart,
+  history,
+  setHistory,
+}) => {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
-
-  const [history, setHistory] = useState([]);
 
   //search
   const handleChange = (e) => {

@@ -24,7 +24,7 @@
   display: grid;
   transition: 0.5s ease-out;
   overflow-x: hidden;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 .is-closed .sidebar_container {
   visibility: hidden;
@@ -40,7 +40,7 @@
   margin-top: center;
   -webkit-transition: all 0.5s;
   transition: all 0.8s;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 .search_input {
   padding: 50px;

@@ -13,7 +13,7 @@ import {
 // import RND from "./chartItem/RND";
 // import { Grid } from "@material-ui/core";
 
-const Index = ({ addChart, setAddChart }) => {
+const Index = ({ addChart, setAddChart, history, setHistory }) => {
   let data = Data.find((e) => e.id === 1);
   return (
     <main>
@@ -41,8 +41,11 @@ const Index = ({ addChart, setAddChart }) => {
                 <Cards
                   key={datas.id}
                   data={datas}
+                  datas={datas}
                   addChart={addChart}
                   setAddChart={setAddChart}
+                  history={history}
+                  setHistory={setHistory}
                 />
               </div>
             );
