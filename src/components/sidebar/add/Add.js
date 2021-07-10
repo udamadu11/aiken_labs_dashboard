@@ -17,7 +17,7 @@ const Add = ({ add, setAdd }) => {
         },
       ]);
     } else {
-      alert("cant add");
+      alert("Maximum item exeed");
     }
   };
   return (

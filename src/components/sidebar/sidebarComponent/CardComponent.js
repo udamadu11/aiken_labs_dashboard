@@ -89,13 +89,17 @@ const CardComponent = ({
 
   //submit
   const handleSubmit = (el) => {
-    const item = addChart.find((e) => e.id === datas.id);
-    setHistory([...history, item]);
-    if (item !== 0) {
-      item.type = barName;
-      item.chartName = input;
-      item.DataSet = charData;
-      setAddChart([...addChart]);
+    if (barName != "" || input != "" || charData != "") {
+      const item = addChart.find((e) => e.id === datas.id);
+      setHistory([...history, item]);
+      if (item !== 0) {
+        item.type = barName;
+        item.chartName = input;
+        item.DataSet = charData;
+        setAddChart([...addChart]);
+      }
+    } else {
+      alert("Data feilds or field null");
     }
   };
 
@@ -110,9 +114,6 @@ const CardComponent = ({
     let pos = addChart.filter((e) => e.id === datas.id);
     setHistory([...history, pos[0]]);
     setAddChart(addChart.filter((e) => e.id !== datas.id));
-
-    console.log("history", history);
-    console.log("chart", addChart);
   };
   return (
     <div>

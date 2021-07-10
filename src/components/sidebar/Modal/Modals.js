@@ -10,6 +10,7 @@ import {
   Input,
   Select,
   MenuItem,
+  InputLabel,
 } from "@material-ui/core";
 
 //component
@@ -63,13 +64,17 @@ const Modals = ({
   //submit
   const handleSubmit = (e) => {
     setHistory([...addChart]);
-    const pos = {
-      id: Math.round(Math.random() * 1000),
-      type: barName,
-      chartName: input,
-      DataSet: charData,
-    };
-    setAddChart([...addChart, pos]);
+    if (barName != "" || input != "" || charData != "") {
+      const pos = {
+        id: Math.round(Math.random() * 1000),
+        type: barName,
+        chartName: input,
+        DataSet: charData,
+      };
+      setAddChart([...addChart, pos]);
+    } else {
+      alert("Data feilds or field null");
+    }
   };
 
   return (
@@ -86,9 +91,12 @@ const Modals = ({
               type="text"
               onChange={handleChangeInput}
               style={{ width: 350 }}
+              required={true}
             />
             <div>
+              <InputLabel id="barname">Chart Type</InputLabel>
               <Select
+                labelId="barname"
                 fullWidth
                 open={openModal}
                 onClose={handleCloseModal}
@@ -96,6 +104,7 @@ const Modals = ({
                 value={barName}
                 onChange={onChangeBarName}
                 style={{ marginBottom: 10 }}
+                required={true}
               >
                 {ChartNames.map((name) => {
                   return (
@@ -105,7 +114,9 @@ const Modals = ({
                   );
                 })}
               </Select>
+              <InputLabel id="data">Data Sets</InputLabel>
               <Select
+                labelId="data"
                 fullWidth
                 open={DataModal}
                 onClose={handleCloseDataModal}
@@ -113,6 +124,7 @@ const Modals = ({
                 value={charData}
                 onChange={onChangeData}
                 style={{ marginBottom: 10 }}
+                required={true}
               >
                 {ChartData.map((chartItem) => {
                   return (
