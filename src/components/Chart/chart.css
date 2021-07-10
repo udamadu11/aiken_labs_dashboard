@@ -45,6 +45,7 @@ main {
 .main_cards {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 .griditem {
   display: flex;
