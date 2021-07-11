@@ -23,7 +23,9 @@ const Navbar = ({ toggle }) => {
         <a href="a">
           <FontAwesomeIcon icon={faSearch} />
         </a>
-        <a href="a">Dashbord</a>
+        <a href="a" className="active">
+          Dashbord
+        </a>
         <a href="a">Play Area</a>
         <a href="a">Wiget</a>
         <a href="a">Template</a>
